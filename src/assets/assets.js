@@ -13,6 +13,11 @@ import afriChild from "./afriChild.jpg";
 import vid1 from "./vid1.mp4";
 import vid2 from "./vid2.mp4";
 import vid3 from "./vid3.mp4";
+import hero1 from "./hero1.jpg";
+import hero2 from "./hero2.jpg";
+import hero3 from "./hero3.jpg";
+import hero4 from "./hero4.jpg";
+import hero5 from "./hero5.png";
 
 import {
   Home,
@@ -44,7 +49,13 @@ export const assets = {
   sponsorImage,
   embozyLogo,
 };
-
+export const heroImages = {
+  hero1,
+  hero2,
+  hero3,
+  hero4,
+  hero5,
+};
 export const menuItemData = [
   { Icon: Home, label: "Feed", to: "/dashboard" },
   { Icon: Users, label: "Connections", to: "/dashboard/connections" },

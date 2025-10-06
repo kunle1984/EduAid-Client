@@ -127,3 +127,254 @@ footer.footer-section {
   transform: translateY(100%);
   opacity: 0;
 }
+
+/* Hero section */
+.carousel-item {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-item .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 32, 32, 0.9) 40%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+.carousel-item .container {
+  position: relative;
+  z-index: 2;
+}
+
+.handwritten {
+  font-family: "Brush Script MT", cursive;
+  font-size: 1.3em;
+  font-weight: 600;
+  text-decoration: underline wavy #ffc107;
+}
+
+/* Heart animation (draw + pulse) */
+.heart-svg {
+  width: 300px;
+  height: 200px;
+  right: 18%;
+  top: 40%;
+  z-index: 2;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.draw-heart path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: draw 2.5s ease forwards, pulse 2s ease-in-out 2.6s infinite;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #ffc107;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  background-size: 1rem;
+}
+
+/* Fade animation smoothing */
+.carousel-fade .carousel-item {
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel-item {
+    text-align: left;
+    background-position: center;
+  }
+
+  .heart-svg {
+    display: none;
+  }
+
+  h1.display-5 {
+    font-size: 2rem;
+  }
+}
+.hero-section {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center right;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+/* Overlay */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 32, 32, 0.9) 40%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.handwritten {
+  font-family: "Brush Script MT", cursive;
+  font-weight: 600;
+  font-size: 1.2em;
+  text-decoration: underline wavy #ffc107;
+}
+
+/* Heart SVG */
+.heart-svg {
+  width: 300px;
+  height: 200px;
+  right: 18%;
+  top: 40%;
+  z-index: 2;
+  opacity: 0.9;
+}
+
+/* --- Heart Animation --- */
+.draw-heart path {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: draw 2.5s ease forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Arrows */
+.hero-arrows button {
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.hero-arrows button:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section {
+    text-align: left;
+    background-position: center;
+  }
+
+  .hero-arrows {
+    display: none;
+  }
+
+  .heart-svg {
+    display: none;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+}
+
+.charity-section {
+  background-size: cover;
+  background-position: center right;
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+/* Overlay */
+.charity-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 32, 32, 0.2) 40%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: 1;
+}
+
+/* carosusel card animation */
+/* Slide Animations */
+.slide-in-left {
+  animation: slideInLeft 1s ease-out;
+}
+.slide-in-right {
+  animation: slideInRight 1s ease-out;
+}
+.fade-up {
+  animation: fadeUp 1.2s ease-out 0.4s both;
+}
+.fade-up-delay {
+  animation: fadeUp 1.2s ease-out 0.6s both;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
