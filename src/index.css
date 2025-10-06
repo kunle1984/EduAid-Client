@@ -1,68 +1,129 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* --- Make Footer Stick to Bottom --- */
+html,
 body {
+  height: 100%;
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+main {
+  flex: 1 0 auto;
+}
+/* for footer */
+footer.footer-section {
+  flex-shrink: 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.footer-section {
+  background-color: #0b1418;
+  color: #e6e6e6;
+  transition: all 0.3s ease-in-out;
 }
 
+.footer-section hr {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.footer-section a {
+  transition: color 0.3s ease;
+}
+
+.footer-section .newsletter-input {
+  background-color: #182229;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.footer-section .newsletter-input:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.25);
+}
+
+.footer-section .newsletter-btn {
+  background-color: #ffc107;
+  color: #212529;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.footer-section .newsletter-btn:hover {
+  background-color: #e0a800;
+}
+
+/* Social icons */
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #182229;
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+/* Light theme (system based) */
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+  .footer-section {
+    background-color: #f8f9fa;
+    color: #212529;
   }
-  a:hover {
-    color: #747bff;
+
+  .footer-section hr {
+    border-color: rgba(0, 0, 0, 0.1);
   }
-  button {
-    background-color: #f9f9f9;
+
+  .footer-section .newsletter-input {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    color: #212529;
   }
+
+  .footer-section .newsletter-btn {
+    background-color: #212529;
+    color: #fff;
+  }
+
+  .social-icon {
+    background-color: #e9ecef;
+    color: #212529;
+  }
+
+  .social-icon:hover {
+    background-color: #ffc107;
+    color: #212529;
+  }
+}
+
+.footer-section {
+  background-color: #222;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.6s ease-in-out;
+}
+
+/* When visible, slide up */
+.footer-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Hidden initially */
+.footer-hidden {
+  transform: translateY(100%);
+  opacity: 0;
 }
