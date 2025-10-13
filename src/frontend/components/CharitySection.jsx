@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Heart, Utensils, Stethoscope, ArrowRight } from "lucide-react";
 import { heroImages } from "../../assets/assets";
+import { useTheme } from "../../context/ThemeContext";
 const { hero1, hero2, hero3, hero4, hero5 } = heroImages;
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -13,6 +14,7 @@ const fadeUp = {
 };
 
 const CharitySection = () => {
+  const { darkMode } = useTheme();
   return (
     <div className="container my-5 py-5">
       {/* Section Header */}
@@ -35,7 +37,7 @@ const CharitySection = () => {
       </motion.div>
 
       {/* Feature Cards */}
-      <div className="row justify-content-center mb-5 text-center">
+      <div className={`row justify-content-center mb-5 text-center `}>
         {[
           { Icon: Heart, color: "warning", title: "Child Education" },
           { Icon: Utensils, color: "dark", title: "Healthy Food" },
@@ -43,7 +45,7 @@ const CharitySection = () => {
         ].map(({ Icon, color, title }, i) => (
           <motion.div
             key={title}
-            className="col-md-4 mb-4"
+            className={`col-md-4 mb-4 ${darkMode} ?  "text-light bg-dark": "text-dark" `}
             custom={i}
             initial="hidden"
             whileInView="visible"
@@ -51,11 +53,11 @@ const CharitySection = () => {
             variants={fadeUp}
           >
             <div
-              className={`p-4 rounded-4 border border-2 border-${color} bg-light shadow-sm h-100`}
+              className={`p-4 card rounded-4 border border-2   shadow h-100  ${darkMode} ?  "bg-dark text-light":  "bg-light"`}
             >
               <Icon size={40} className={`text-${color} mb-3`} />
               <h5 className="fw-bold">{title}</h5>
-              <p className="text-muted small">
+              <p className={`small`}>
                 Set up a secure and user-friendly online donation platform that
                 accepts multiple options.
               </p>

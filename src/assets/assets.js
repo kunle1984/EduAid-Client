@@ -1,10 +1,10 @@
-import logo from "./logo.jpg";
+import logo from "./edulogo.png";
 import coverImage from "./cover-image.jpg";
 import bgImage from "./background.jpg";
 import groupUser from "./group-user.png";
 import profieImage from "./profile.webp";
 import sponsorImage from "./sponsor-image.webp";
-import embozyLogo from "./embozyLogo.png";
+import embozyLogo from "./edulogo.png";
 import man1 from "./man1.jpg";
 import girl from "./girls.jpg";
 import girl2 from "./girls2.webp";
@@ -18,6 +18,10 @@ import hero2 from "./hero2.jpg";
 import hero3 from "./hero3.jpg";
 import hero4 from "./hero4.jpg";
 import hero5 from "./hero5.png";
+import logo1 from "./logo1.png";
+import logo2 from "./logo2.png";
+import logo3 from "./logo3.webp";
+import logo4 from "./logo5.webp";
 
 import {
   Home,
@@ -33,6 +37,7 @@ import cat from "./cat.mp4";
 import dance from "./dance.mp4";
 
 export const videos = { cat, dance, vid1, vid2, vid3 };
+export const logos = { logo1, logo2, logo3, logo4 };
 export const userImages = {
   man1,
   girl,
@@ -42,6 +47,7 @@ export const userImages = {
 };
 export const assets = {
   logo,
+
   coverImage,
   bgImage,
   groupUser,
@@ -55,6 +61,7 @@ export const heroImages = {
   hero3,
   hero4,
   hero5,
+  logo,
 };
 export const menuItemData = [
   { Icon: Home, label: "Feed", to: "/dashboard" },

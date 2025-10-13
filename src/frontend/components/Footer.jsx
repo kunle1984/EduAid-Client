@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 // make sure this file exists in the same folder
 
 const Footer = () => {
@@ -94,6 +95,9 @@ const Footer = () => {
           <p className="mb-0">
             © {new Date().getFullYear()} MacularTech. All rights reserved.
           </p>
+          <a href="#" class="position-absolute bottom-0 end-0 p-5">
+            <ArrowUp size={25} className="ms-2 text-warning" />
+          </a>
         </div>
       </div>
     </footer>

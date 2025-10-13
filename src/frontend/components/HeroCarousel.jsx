@@ -2,7 +2,31 @@ import React from "react";
 
 import { ArrowRight } from "lucide-react";
 import { heroImages } from "../../assets/assets";
-const { hero1, hero2, hero3, hero4, hero5 } = heroImages;
+import { logos } from "../../assets/assets";
+const { hero1, hero2, hero3, hero4, hero5, logo } = heroImages;
+const logoData = [
+  {
+    image: logo,
+    title: "HEART CARE",
+    subtitle: "CHARITY",
+  },
+  {
+    image: logo,
+    title: "THEBIRD",
+    subtitle: "creative shape",
+  },
+  {
+    image: logo,
+    title: "LOREM IPSUM",
+    subtitle: "YOUR SLOGAN HERE",
+  },
+  {
+    image: logo,
+    title: "Tree Life",
+    subtitle: "SLOGAN HERE",
+  },
+];
+
 const HeroCarousel = () => {
   const slides = [
     {

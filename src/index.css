@@ -327,7 +327,7 @@ footer.footer-section {
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0, 32, 32, 0.2) 40%,
+    rgba(0, 32, 32, 0.5) 40%,
     rgba(0, 0, 0, 0.3) 100%
   );
   z-index: 1;
@@ -376,5 +376,82 @@ footer.footer-section {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+/* menu */
+
+.menu-drawer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 193, 7, 0.95);
+  backdrop-filter: blur(12px);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-10px);
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+.menu-drawer.show {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 15px 0;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 992px) {
+  .menu-drawer {
+    position: static;
+    background: transparent !important;
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    box-shadow: none;
+    transform: none;
+  }
+}
+.nav-link {
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+/* Dark mode body */
+.dark-mode {
+  background-color: #121212;
+  color: #f8f9fa;
+}
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+.fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-5px);
   }
 }

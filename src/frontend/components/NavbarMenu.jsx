@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import { heroImages } from "../../assets/assets";
+const { logo } = heroImages;
 import {
   Menu,
   X,
@@ -8,32 +10,27 @@ import {
   Sun,
   Moon,
 } from "lucide-react";
+import { useTheme } from "../../context/ThemeContext";
 
 const NavbarMenu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const [isSticky, setIsSticky] = useState(false); // 👈 new state
   const searchRef = useRef(null);
+  const { darkMode, toggleTheme } = useTheme();
 
-  // Load saved theme on mount
+  // Detect scroll for sticky activation
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-      setDarkMode(true);
-      document.body.classList.add("dark-mode");
-    }
+    const handleScroll = () => {
+      if (window.scrollY > 150) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Persist theme changes
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-  }, [darkMode]);
 
   // Close search if clicking outside
   useEffect(() => {
@@ -56,7 +53,17 @@ const NavbarMenu = () => {
   }, []);
 
   return (
-    <header className="sticky-top">
+    <header
+      className={`navbar-wrapper ${isSticky ? "sticky-active" : ""}`}
+      style={{
+        position: isSticky ? "fixed" : "relative",
+        top: isSticky ? "0" : "auto",
+        width: "100%",
+        zIndex: 1050,
+        transition: "all 0.4s ease-in-out",
+        boxShadow: isSticky ? "0 2px 10px rgba(0,0,0,0.15)" : "none",
+      }}
+    >
       {/* Top Info Bar */}
       <div
         className={`py-2 ${
@@ -89,18 +96,27 @@ const NavbarMenu = () => {
           darkMode ? "bg-dark text-light" : "bg-warning"
         }`}
       >
+        <a
+          className={`navbar-brand fw-bold ${
+            darkMode ? "text-light" : "text-dark"
+          }`}
+          href="#"
+        >
+          <img
+            src={logo}
+            alt="EduAid Logo"
+            className="rounded-circle nav-brand ms-5"
+            style={{
+              width: "90px",
+              height: "60px",
+              objectFit: "cover",
+            }}
+          />
+        </a>
         <div className="container d-flex justify-content-between align-items-center">
           {/* Logo */}
-          {/* <a
-            className={`navbar-brand fw-bold  ${
-              darkMode ? "text-light" : "text-dark"
-            }`}
-            href="#"
-          >
-            <img src="" alt="logo" className=" rounded-circle d-block" />
-          </a> */}
 
-          {/* Menu Toggle (Lucide) */}
+          {/* Menu Toggle */}
           <button
             className="border-0 bg-transparent d-lg-none"
             onClick={() => setShowMenu((prev) => !prev)}
@@ -175,7 +191,7 @@ const NavbarMenu = () => {
               {/* Theme Toggle */}
               <button
                 className="btn btn-sm border-0 bg-transparent"
-                onClick={() => setDarkMode(!darkMode)}
+                onClick={toggleTheme}
               >
                 {darkMode ? (
                   <Sun size={22} color="white" />
@@ -208,73 +224,6 @@ const NavbarMenu = () => {
           </div>
         </div>
       </nav>
-
-      {/* Custom Styles */}
-      <style>{`
-        .menu-drawer {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          width: 100%;
-          background-color: rgba(255, 193, 7, 0.95);
-          backdrop-filter: blur(12px);
-          max-height: 0;
-          opacity: 0;
-          overflow: hidden;
-          transform: translateY(-10px);
-          transition: all 0.5s ease;
-          display: flex;
-          flex-direction: column;
-          z-index: 1000;
-        }
-        .menu-drawer.show {
-          max-height: 500px;
-          opacity: 1;
-          transform: translateY(0);
-          padding: 15px 0;
-          box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-        }
-        @media (min-width: 992px) {
-          .menu-drawer {
-            position: static;
-            background: transparent !important;
-            max-height: none;
-            opacity: 1;
-            overflow: visible;
-            flex-direction: row;
-            align-items: center;
-            padding: 0;
-            box-shadow: none;
-            transform: none;
-          }
-        }
-        .nav-link {
-          padding: 8px 0;
-          transition: color 0.3s ease;
-        }
-        .nav-link:hover {
-          text-decoration: underline;
-        }
-        /* Dark mode body */
-        .dark-mode {
-          background-color: #121212;
-          color: #f8f9fa;
-        }
-        .fade-in {
-          animation: fadeIn 0.3s ease forwards;
-        }
-        .fade-out {
-          animation: fadeOut 0.3s ease forwards;
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-5px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeOut {
-          from { opacity: 1; transform: translateY(0); }
-          to { opacity: 0; transform: translateY(-5px); }
-        }
-      `}</style>
     </header>
   );
 };

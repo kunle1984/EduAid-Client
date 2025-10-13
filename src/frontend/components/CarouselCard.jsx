@@ -3,7 +3,9 @@ import React, { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { heroImages } from "../../assets/assets";
 const { hero1, hero2, hero3, hero4, hero5 } = heroImages;
+import { useTheme } from "../../context/ThemeContext";
 const CarouselCard = () => {
+  const { darkMode } = useTheme();
   const carouselRef = useRef(null);
 
   const slides = [
@@ -164,7 +166,7 @@ const CarouselCard = () => {
               <div
                 className="position-absolute top-0 start-0 w-100 h-100"
                 style={{
-                  backgroundColor: "rgba(218, 213, 213, 0.65)",
+                  backgroundColor: "rgba(0, 0, 0, 0.65)",
                   zIndex: 1,
                 }}
               ></div>
@@ -189,18 +191,25 @@ const CarouselCard = () => {
                 <div className="row justify-content-center g-2 mb-5">
                   {slide.features.map((feature) => (
                     <div
-                      className="col-md-3 fade-up-delay "
+                      className={`col-md-3 fade-up-delay `}
                       key={feature.title}
                     >
-                      <div className={`card  text-center text-dark  h-100`}>
+                      <div
+                        className={`card  text-center  h-100 ${darkMode} ?  "text-light": "text-dark" `}
+                      >
                         <img
                           className="card-img-top"
                           src={feature.image}
                           alt={feature.title}
                         />
-                        <div className="card-body text-dark">
+                        <div
+                          className={`card-body  ${darkMode} ?  "text-light": "text-dark"`}
+                        >
                           <h5 className="fw-bold  ">{feature.title}</h5>
                           <p className="small card-text">{feature.text}</p>
+                          <button className="btn btn-outline-warning rounded-pill btn-sm">
+                            Know More..
+                          </button>
                         </div>
                       </div>
                     </div>
