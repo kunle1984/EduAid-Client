@@ -455,3 +455,25 @@ footer.footer-section {
     transform: translateY(-5px);
   }
 }
+
+/* Backend dashboard */
+.hover-bg-dark:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.z-3 {
+  z-index: 3;
+}
+
+.bg-opacity-25 {
+  transition: background-color 0.3s ease;
+}

@@ -8,6 +8,7 @@ import Footer from "./frontend/components/Footer";
 import ContactPage from "./frontend/pages/ContactPage";
 import StudentDetails from "./frontend/pages/StudentDetails";
 import LiveRecorder from "./frontend/pages/LiveRecorder";
+import BackendLayout from "./backend/components/BackendLayout";
 
 function App() {
   return (

@@ -1,16 +1,13 @@
 import React from "react";
-
-import { Outlet } from "react-router-dom";
 import NavbarMenu from "./NavbarMenu";
-import Footer from "./Footer";
+import { Outlet } from "react-router-dom";
+
 const Layout = () => {
   return (
     <div className="w-100 h-100 ">
-      <NavbarMenu />
       <div className="">
         <Outlet />
       </div>
-      <Footer />
     </div>
   );
 };

@@ -1,18 +1,17 @@
+import { Sidebar } from "lucide-react";
 import React from "react";
 
 import { Outlet } from "react-router-dom";
-import NavbarMenu from "./NavbarMenu";
-import Footer from "./Footer";
-const Layout = () => {
+import SidebarMenu from "./SidebarMenu";
+const BackendLayout = () => {
   return (
     <div className="w-100 h-100 ">
-      <NavbarMenu />
+      <SidebarMenu onToggleCollapse={() => {}} />
       <div className="">
         <Outlet />
       </div>
-      <Footer />
     </div>
   );
 };
 
-export default Layout;
+export default BackendLayout;

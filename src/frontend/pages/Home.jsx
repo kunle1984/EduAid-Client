@@ -8,6 +8,7 @@ import Testimonial from "../components/Testimonial";
 import PartnerLogos from "../components/PartnerLogos";
 import { logos } from "../../assets/assets";
 import { heroImages } from "../../assets/assets";
+import DonateSection from "../components/DonateSection";
 const { hero1, hero2, hero3, hero4, hero5, logo } = heroImages;
 
 const logoData = [
@@ -43,6 +44,7 @@ const Home = () => {
       <Testimonial />
       <Faq />
       <PartnerLogos logos={logoData} />
+      <DonateSection />
     </div>
   );
 };
